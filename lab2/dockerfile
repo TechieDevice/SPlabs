@@ -1,0 +1,6 @@
+FROM ubuntu
+COPY assembler.s assembler.s
+RUN apt-get update -y
+RUN apt-get install -y gcc-multilib
+RUN gcc -m32 assembler.s -o assembler -g
+CMD ./assembler
