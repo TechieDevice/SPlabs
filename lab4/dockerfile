@@ -1,0 +1,11 @@
+FROM ubuntu
+COPY map.cpp map.cpp
+COPY main.h main.h
+COPY main.cpp main.cpp
+COPY runner.cpp runner.cpp
+RUN apt-get update -y
+RUN apt-get install -y g++
+RUN g++ ../runner.cpp ../main.cpp -o runner
+RUN g++ ../map.cpp ../main.cpp -o map
+RUN export TERM=xterm
+CMD ./map
